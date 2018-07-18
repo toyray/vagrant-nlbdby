@@ -1,0 +1,27 @@
+windows:
+  - name: db
+    layout: main-vertical
+    panes:
+      - sudo mysqld
+  - name: server
+    root: ~/nlbdby
+    layout: main-vertical
+    panes:
+      - cd . && bundle exec rails s -b 0.0.0.0
+  - name: bash
+    root: ~/nlbdby
+    layout: even-horizontal
+    panes:
+      - cd .
+    focus: true
+  - name: vim
+    root: ~/nlbdby
+    layout: even-horizontal
+    panes:
+      - cd . && vim
+  - name: delayed_job
+    root: ~/nlbdby
+    layout: even-horizontal
+    panes:
+      - cd . && rake jobs:clear && rake jobs:work
+      - tail -n 10 -f log/import_error.log
